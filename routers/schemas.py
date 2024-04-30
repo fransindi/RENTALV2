@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Annotated
 from fastapi import Query
 from datetime import date
+from typing import List
 
 
 class UserAuth(BaseModel):
@@ -9,16 +10,19 @@ class UserAuth(BaseModel):
     username: str
     email: str
 
+
 class UserBase(BaseModel):
-    username: Annotated[str, Query(min_length='3', max_length='20')]
-    password: Annotated[str, Query(min_length='8', max_length='20')]
+    username: Annotated[str, Query(min_length="3", max_length="20")]
+    password: Annotated[str, Query(min_length="8", max_length="20")]
     franchise_id: int
+
 
 # For UserDisplay
 class FranchiseDisplay(BaseModel):
     id: int
     name: str
     location: str
+
 
 class UserDisplay(BaseModel):
     username: str
@@ -28,15 +32,17 @@ class UserDisplay(BaseModel):
 class EquipmentBase(BaseModel):
     name: str
     brand: str
-    size: int
+    size: float
     category_id: int
     typo_id: int
+
 
 # For Equipment Display
 class CategoryBase(BaseModel):
     id: int
     name: str
     rate: float
+
 
 # For Equipment Display
 class TypoBase(BaseModel):
@@ -60,6 +66,13 @@ class ReservationBase(BaseModel):
     rental_begin: date
     days: int
 
+
 class ClientBase(BaseModel):
     name: str
     contact: str
+
+
+class MemberBase(BaseModel):
+    name: str
+    equipment_ids: List[int]
+    reservation_id: int
