@@ -12,6 +12,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 
 
+# TABLE USER
 class DbUser(Base):
     __tablename__ = "user"
     id = Column(Integer, primary_key=True, index=True)
@@ -22,6 +23,7 @@ class DbUser(Base):
     franchise = relationship("DbFranchise", back_populates="user")
 
 
+# TABLE FRANCHISE
 class DbFranchise(Base):
     __tablename__ = "franchise"
     id = Column(Integer, primary_key=True, index=True)
@@ -31,6 +33,7 @@ class DbFranchise(Base):
     user = relationship("DbUser", back_populates="franchise")
 
 
+# TABLE MANY TO MANY MEMBER-EQUIPMENT
 member_equipment = Table(
     "member_equipment",
     Base.metadata,
@@ -39,6 +42,7 @@ member_equipment = Table(
 )
 
 
+# TABLE EQUIPMENT
 class DbEquipment(Base):
     __tablename__ = "equipment"
     id = Column(Integer, primary_key=True, index=True)
@@ -57,6 +61,7 @@ class DbEquipment(Base):
     )
 
 
+# TABLE CATEGORY
 class DbCategory(Base):
     __tablename__ = "category"
     id = Column(Integer, primary_key=True, index=True)
@@ -66,6 +71,7 @@ class DbCategory(Base):
     equipment = relationship("DbEquipment", back_populates="category")
 
 
+# TABLE TYPO
 class DbTypo(Base):
     __tablename__ = "typo"
     id = Column(Integer, primary_key=True, index=True)
@@ -75,6 +81,7 @@ class DbTypo(Base):
     equipment = relationship("DbEquipment", back_populates="typo")
 
 
+# TABLE RESERVATION
 class DbReservation(Base):
     __tablename__ = "reservation"
     id = Column(Integer, primary_key=True, index=True)
@@ -87,6 +94,7 @@ class DbReservation(Base):
     contract = relationship("DbContract", back_populates="reservation")
 
 
+# TABLE CLIENT
 class DbClient(Base):
     __tablename__ = "client"
     id = Column(Integer, primary_key=True, index=True)
@@ -96,6 +104,7 @@ class DbClient(Base):
     reservation = relationship("DbReservation", back_populates="client")
 
 
+# TABLE MEMBER
 class DbMember(Base):
     __tablename__ = "member"
     id = Column(Integer, primary_key=True, index=True)
@@ -108,6 +117,7 @@ class DbMember(Base):
     reservation = relationship("DbReservation", back_populates="member")
 
 
+# TABLE CONTRACT
 class DbContract(Base):
     __tablename__ = "contract"
     id = Column(Integer, primary_key=True, index=True)
