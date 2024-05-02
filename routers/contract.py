@@ -23,3 +23,7 @@ def create_contract(reservation_id: int, db: Session = Depends(get_db)):
 )
 def get_contract(id: int, db: Session = Depends(get_db)):
     return db_contract.get_contract(db, id)
+
+@router.post('/')
+def return_contract(id: int, db: Session = Depends(get_db)):
+    return db_contract.return_rental(db, id)

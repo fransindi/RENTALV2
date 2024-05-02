@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from routers.schemas import ReservationBase
+from routers.schemas import ReservationBase, ReservationBase2
 from db.models import DbReservation, DbClient
 from fastapi import HTTPException, status
 
@@ -34,3 +34,4 @@ def create_reservation(db: Session, request: ReservationBase):
     db.commit()
     db.refresh(reservation)
     return reservation
+

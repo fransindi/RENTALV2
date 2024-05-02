@@ -43,3 +43,22 @@ def create_contract(db: Session, reservation_id: int):
 
 def get_contract(db: Session, id: int):
     return db.query(DbContract).filter(DbContract.id == id).first()
+
+
+def return_rental(db: Session, id: int):
+    contract = db.query(DbContract).filter(DbContract.id == id).first()
+    reservation = db.query(DbReservation).filter(DbReservation.id == contract.reservation_id).first()
+    members = db.query(DbMember).filter(DbMember.reservation_id == reservation.id).all()
+
+    js = []
+    for i in members:
+        for j in i.equipment:
+            js.append(j.id)
+            j.available = True
+
+    return {
+        'reservation_id': reservation.id,
+        'Items': js,
+        'returned': 'completed'
+    }
+

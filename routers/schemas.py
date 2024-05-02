@@ -60,6 +60,7 @@ class EquipmentDisplay(BaseModel):
     category: CategoryBase
     typo: TypoBase
     price: float
+    available: bool
 
 
 class ReservationBase(BaseModel):
