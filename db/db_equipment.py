@@ -45,3 +45,10 @@ def get_equipment(db: Session, id: int):
             status_code=status.HTTP_404_NOT_FOUND, detail="Equipment id not found"
         )
     return equipment
+
+
+def delete_equipment(db: Session, id: int):
+    equipment = get_equipment(db, id)
+    db.delete(equipment)
+    db.commit()
+    return "Equipment deleted"

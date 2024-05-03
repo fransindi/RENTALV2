@@ -27,3 +27,11 @@ def get_client(db: Session, id: int):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Client dont found"
         )
+    return client
+
+
+def delete_client(db: Session, id: int):
+    client = get_client(db, id)
+    db.delete(client)
+    db.commit()
+    return "client deleted"

@@ -41,3 +41,12 @@ def get_all(db: Session = Depends(get_db)):
 )
 def get_equipment(id: int, db: Session = Depends(get_db)):
     return db_equipment.get_equipment(db, id)
+
+
+@router.delete(
+    "/{id}",
+    response_description="A confirmation deleted message or error",
+    summary="Delete a specific client.",
+)
+def delete_equipment(id: int, db: Session = Depends(get_db)):
+    return db_equipment.delete_equipment(db, id)

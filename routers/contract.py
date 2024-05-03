@@ -24,6 +24,16 @@ def create_contract(reservation_id: int, db: Session = Depends(get_db)):
 def get_contract(id: int, db: Session = Depends(get_db)):
     return db_contract.get_contract(db, id)
 
-@router.post('/')
+
+@router.post("/return/{id}")
 def return_contract(id: int, db: Session = Depends(get_db)):
     return db_contract.return_rental(db, id)
+
+
+@router.delete(
+    "/{id}",
+    response_description="A confirmation deleted message or error",
+    summary="Delete a specific client.",
+)
+def delete_contract(id: int, db: Session = Depends(get_db)):
+    return db_contract.delete_contract(db, id)

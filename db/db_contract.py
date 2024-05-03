@@ -47,7 +47,11 @@ def get_contract(db: Session, id: int):
 
 def return_rental(db: Session, id: int):
     contract = db.query(DbContract).filter(DbContract.id == id).first()
-    reservation = db.query(DbReservation).filter(DbReservation.id == contract.reservation_id).first()
+    reservation = (
+        db.query(DbReservation)
+        .filter(DbReservation.id == contract.reservation_id)
+        .first()
+    )
     members = db.query(DbMember).filter(DbMember.reservation_id == reservation.id).all()
 
     js = []
@@ -56,9 +60,11 @@ def return_rental(db: Session, id: int):
             js.append(j.id)
             j.available = True
 
-    return {
-        'reservation_id': reservation.id,
-        'Items': js,
-        'returned': 'completed'
-    }
+    return {"reservation_id": reservation.id, "Items": js, "returned": "completed"}
 
+
+def delete_contract(db: Session, id: int):
+    contract = get_contract(db, id)
+    db.delete(contract)
+    db.commit()
+    return "Contract deleted"

@@ -15,3 +15,26 @@ router = APIRouter(prefix="/reservation", tags=["reservation"])
 )
 def create_reservation(request: ReservationBase, db: Session = Depends(get_db)):
     return db_reservation.create_reservation(db, request)
+
+
+@router.get(
+    "/all",
+    response_description="List of all the reservations",
+    summary="Retrieves all the information in the Reservation Table.",
+)
+@router.get(
+    "/{id}",
+    response_description="Information about an specific reservation",
+    summary="Retrieve the information of a reservation.",
+)
+def get_reservation(id: int, db: Session = Depends(get_db)):
+    return db_reservation.get_reservation(db, id)
+
+
+@router.delete(
+    "/{id}",
+    response_description="An error or okey message.",
+    summary="Delete an specific reservation.",
+)
+def delete_reservation(id: int, db: Session = Depends(get_db)):
+    return db_reservation.delete_reservation(db, id)

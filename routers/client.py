@@ -32,3 +32,12 @@ def get_all(db: Session = Depends(get_db)):
 )
 def get_client(id: int, db: Session = Depends(get_db)):
     return db_client.get_client(db, id)
+
+
+@router.delete(
+    "/{id}",
+    response_description="A confirmation deleted message or error",
+    summary="Delete a specific client.",
+)
+def delete_client(id: int, db: Session = Depends(get_db)):
+    return db_client.delete_client(db, id)
