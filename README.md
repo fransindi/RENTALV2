@@ -17,33 +17,40 @@ Un ejemplo del DER.
 
 ## Endpoints: 
 
-#### Client
+**Client**
 - **POST client/:** Crea un cliente nuevo.
 - **GET client/all:** Lista todos los clientes.
 - **GET client/{id}:** Lista un cliente especifico.
 - **DELETE client/{id}:** Elimina un cliente en especifico.
 
-#### Equipment
+**Equipment**
 - **POST equipment/:** Crea un equipo nuevo.
 - **GET equipment/all:** Lista todos los equipamientos.
 - **GET equipment/{id}:** Lista un equipo especifico.
 - **DELETE equipment/{id}:** Elimina un equipo en especifico.
 
-#### Member
+**Member**
 - **POST member/{reservation_id}:** Crea un nuevo miembro para una reserva ya creada.
 - **GET member/by_reservation/{id}:** Lista todos los miembros de una reserva
 
-#### Reservation
+**Reservation**
 - **POST reservation/:** Crea una nueva reserva.
 - **GET reservation/all:** Lista todas las reservas.
 - **GET reservation/{id}:** Lista una reserva en especifico.
 - **DELETE reservation/{id}:** Elimina una reserva en especifico.
 
-#### Contract
+**Contract**
 - **POST contract/{reservation_id}:** Crea un contrato nuevo desde una reserva.
 - **GET contract/all:** Lista todos los contratos.
 - **POST contract/return/{id}:** Devuelve los equipos de un contrato.
 - **DELETE contract/{id}:** Elimina un contato en especifico.
+
+### Estructura
+
+- **auth:** Contiene el codigo necesario para restringir ciertos endpoints a usuarios no registrados. Tiene la finalidad de poder dar seguimiento a que usuario realizo cada operacion y de poder asignarlo a su local. Asi como poder alquilar equipos de otro local.
+- **db:** Esta carpeta administra todo lo relacionado con la creacion de la base de datos, los modelos (tablas) y la funcionalidad de los endpoints.
+- **routers:** Aqui almacenaremos los enrutadores de nuestra interaccion con la base de datos, dividido en archivos distintos segun el tipo de accion.
+- **main.py** Este sera el archivo principal de nuestro codigo, iniciando fastapi y el resto de componentes.
 
 
 ### Instalación
