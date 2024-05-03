@@ -12,6 +12,7 @@ Un ejemplo del DER.
 
 ![image](https://github.com/fransindi/RENTALV2/assets/83618758/4fd35199-3500-45b1-be6b-f6fd3e4ad1ec)
 
+  
 
 
 ## Endpoints: 
@@ -43,3 +44,29 @@ Un ejemplo del DER.
 - **GET contract/all:** Lista todos los contratos.
 - **POST contract/return/{id}:** Devuelve los equipos de un contrato.
 - **DELETE contract/{id}:** Elimina un contato en especifico.
+
+
+### Instalación
+
+Primero que nada debermos crear un entorno virtual, esto lo haremos con el siguiente comando en bash:
+
+    python3 -m venv env
+
+Ahora debemos hacer uso del entorno con la siguiente linea de codigo.
+
+    source env\Scripts\activate
+
+Una vez descargado el proyecto y en la carpeta raiz del mismo se debe instalar las dependencias con el comando
+
+    pip install -r requirement.txt
+
+
+### Levantar proyecto
+
+
+Para ejecutar el proyecto y que se levanta el servidor se deberá en la raiz del repositorio.
+
+    uvicorn main:app --reload
+
+Esto creará un servidor donde está corriendo la app, en la siguiente url http://localhost:8000/
+
