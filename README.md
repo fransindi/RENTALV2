@@ -55,25 +55,9 @@ Un ejemplo del DER.
 
 ### Instalación
 
-Primero que nada debermos crear un entorno virtual, esto lo haremos con el siguiente comando en bash:
+Este proyecto esta empaquetado en Docker. 
+Para la correcta instalacion debemos ubicarnos en la terminal en la carpeta raiz de nuestro proyecto, ejecutar el siguiente comando:
+   
+    docker-compose up
 
-    python3 -m venv env
-
-Ahora debemos hacer uso del entorno con la siguiente linea de codigo.
-
-    source env\Scripts\activate
-
-Una vez descargado el proyecto y en la carpeta raiz del mismo se debe instalar las dependencias con el comando
-
-    pip install -r requirement.txt
-
-
-### Levantar proyecto
-
-
-Para ejecutar el proyecto y que se levanta el servidor se deberá en la raiz del repositorio.
-
-    uvicorn main:app --reload
-
-Esto creará un servidor donde está corriendo la app, en la siguiente url http://localhost:8000/
-
+La aplicacion correra en localhost en el puerto 8000.
