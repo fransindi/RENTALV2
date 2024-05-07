@@ -22,6 +22,9 @@ def create_reservation(request: ReservationBase, db: Session = Depends(get_db)):
     response_description="List of all the reservations",
     summary="Retrieves all the information in the Reservation Table.",
 )
+def get_all_reservation(db: Session = Depends(get_db)):
+    return db_reservation.get_all(db)
+
 @router.get(
     "/{id}",
     response_description="Information about an specific reservation",
