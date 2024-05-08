@@ -55,6 +55,10 @@ Un ejemplo del DER.
 
 ### Instalación
 
+Primero debemos de clonar el repositorio, ingresa en la terminal:
+
+    git clone https://github.com/fransindi/RENTALV2
+
 Este proyecto esta empaquetado en Docker. 
 Para la correcta instalacion debemos ubicarnos en la terminal en la carpeta raiz de nuestro proyecto, ejecutar el siguiente comando:
    
